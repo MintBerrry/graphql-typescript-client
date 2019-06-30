@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 
 import { Query } from 'react-apollo';
 import Add from './Add'
+import Remove from './Remove'
 import { GET_USERS } from './queries'
 interface Data {
   users: Array<{ id: string; username: string, email: string }>;
@@ -9,7 +10,7 @@ interface Data {
 
 
 const App: React.FC = () => {
-  return <Query<Data> query={GET_USERS}     fetchPolicy="cache-and-network"
+  return <Query<Data> query={GET_USERS} fetchPolicy="cache-and-network"
   >
     {({ loading, error, data }) => {
       if (loading) return <div>Loading...</div>;
@@ -19,7 +20,7 @@ const App: React.FC = () => {
         <Fragment><div>{data && data.users.map((user) => {
           const { username, email, id } = user
 
-          return <div key={id}>{username} - {email}</div>
+          return <div key={id}>{username} - {email} <Remove id={id}/></div>
         })}</div>
           <Add /></Fragment>
       )
