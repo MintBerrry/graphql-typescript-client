@@ -14,7 +14,7 @@ const App: React.FC = () => {
   >
     {({ loading, error, data }) => {
       if (loading) return <div>Loading...</div>;
-      if (error) return <div>Error :(</div>;
+      if (error) return <div>Error :({JSON.stringify(error)}</div>;
 
       return (
         <Fragment><div>{data && data.users.map((user) => {
