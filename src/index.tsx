@@ -7,7 +7,7 @@ import { ApolloProvider } from 'react-apollo';
 import App from './App';
 const cache = new InMemoryCache();
 
-const client = new ApolloClient({ uri: 'http://localhost:3000/graphql' ,cache});
+const client = new ApolloClient({ uri: process.env.NODE_ENV === "production"  ? process.env.REACT_APP_PROD_URL : process.env.REACT_APP_DEV_URL ,cache});
  
 const ApolloApp = () => (
   <ApolloProvider client={client}>
